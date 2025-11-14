@@ -6,14 +6,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "node ace build --ignore-ts-errors",
-    "start": "node build/bin/server.js",
+    "start": "cd build && mkdir -p tmp database && node ace migration:run --force && node bin/server.js",
     "dev": "node ace serve --hmr",
-    "prod": "npm run build && npm run start",
-    "test": "node ace test",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "typecheck": "tsc --noEmit",
-    "db:prepare": "node ace migration:run"
+    "test": "node ace test"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
